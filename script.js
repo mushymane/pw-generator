@@ -39,26 +39,19 @@ function generatePassword() {
     getCharacters();
   }
 
+
+
   function getCharacters() {
     special = confirm("Would you like to include special characters?");
-    console.log("special", special)
     numeric = confirm("What about numeric characters?");
-    console.log("num", numeric)
     lowercase = confirm("Include lowercase letters?");
-    console.log("ler", lowercase)
     uppercase = confirm("Press OK to include uppercase letters");
-    console.log("upep", uppercase);
+
     choices = [special, numeric, lowercase, uppercase];
-    console.log(choices);
-    console.log(condition)
     if (choices.includes(true)) {
       condition = !condition;
-      console.log(condition)
     }
   }
-
-  // check special characters (uppercase, lowercase, numeric, special characters)
-  // 
 }
 
 
