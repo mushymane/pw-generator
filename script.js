@@ -2,45 +2,47 @@
 var generateBtn = document.querySelector("#generate");
 
 function generatePassword() {
-  var characters = prompt("How many characters would you like your password to be?");
-  // if (characters != null && Number.isInteger(parseInt(characters)) && characters <= 128 && characters >= 8) {
-  //   var special = confirm("Would you like to include special characters?");
-  //   var numeric = confirm("What about numeric characters?");
-  //   var lowercase = confirm("Include lowercase letters?");
-  //   var uppercase = confirm("Press OK to include uppercase letters");
-  // } else if (characters === null) {
-  //   characters = prompt("Please enter a number");
-  // } else if (!Number.isInteger(parseInt(characters))) {
-  //   characters = prompt("Please enter a number from 8-128");
-  // } else if (characters > 128) {
-  //   characters = prompt("Please enter a number less than 129");
-  // } else if (characters < 8) {
-  //   characters = prompt("Please enter a number greater than 7");
-  // } else {
-  //   console.log("error");
-  // }
-  while (characters === null || !Number.isInteger(parseInt(characters)) || characters > 128 || characters < 8) {
-    characters = prompt("Please enter a number from 8-128");
+  var length = prompt("How many characters would you like your password to be?");
+  while (length === null || !Number.isInteger(parseInt(length)) || length > 128 || length < 8) {
+    length = prompt("Please enter a number from 8-128");
   }
+
   var special = confirm("Would you like to include special characters?");
-  console.log("special", special)
   var numeric = confirm("What about numeric characters?");
-  console.log("num", numeric)
   var lowercase = confirm("Include lowercase letters?");
-  console.log("ler", lowercase)
   var uppercase = confirm("Press OK to include uppercase letters");
-  console.log("upep", uppercase);
+
   var choices = [special, numeric, lowercase, uppercase];
-  console.log(choices)
   var condition = choices.every(bool => bool === false) // returns true if each value in array is false
-  console.log(condition);
   while (condition) {
     alert("You must have at least one character type")
     getCharacters();
   }
 
+  // 0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ
+  var chars = "";
+  var password = "";
+  if (special) {
+    // chars.concat(" !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~");
+  }
+  if (numeric) {
+    chars.concat("0123456789");
+  }
+  if (lowercase) {
+    chars.concat("abcdefghijklmnopqrstuvwxyz");
+  }
+  if (uppercase) {
+    chars.concat("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+  }
 
+  for (let i = 0; i <= length; i++) {
+    var randomNumber = Math.floor(Math.random() * chars.length);
+    password += chars.substring(randomNumber, randomNumber +1);
+  }
+  console.log(password);
+  
 
+  // other functions
   function getCharacters() {
     special = confirm("Would you like to include special characters?");
     numeric = confirm("What about numeric characters?");
@@ -52,6 +54,8 @@ function generatePassword() {
       condition = !condition;
     }
   }
+
+  return password;
 }
 
 
