@@ -26,16 +26,19 @@ function generatePassword() {
     // chars.concat(" !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~");
   }
   if (numeric) {
-    chars.concat("0123456789");
+    chars = chars.concat("0123456789");
+    console.log(chars)
   }
   if (lowercase) {
-    chars.concat("abcdefghijklmnopqrstuvwxyz");
+    chars = chars.concat("abcdefghijklmnopqrstuvwxyz");
+    console.log(chars)
   }
   if (uppercase) {
-    chars.concat("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+    chars = chars.concat("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+    console.log(chars.length)
   }
 
-  for (let i = 0; i <= length; i++) {
+  for (let i = 0; i < length; i++) {
     var randomNumber = Math.floor(Math.random() * chars.length);
     password += chars.substring(randomNumber, randomNumber +1);
   }
