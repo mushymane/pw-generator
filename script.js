@@ -26,10 +26,12 @@ function generatePassword() {
   // The same questions will be asked if they chose Cancel for each option
   while (condition) {
     alert("You must have at least one character type")
-    getCharacters();
+    selectCharacters();
   }
 
+  // Stores what characters can be selected
   var chars = "";
+  // Stores the password
   var password = "";
 
   // chars will contain these characters based on the user's choices
@@ -52,15 +54,12 @@ function generatePassword() {
     var randomNumber = Math.floor(Math.random() * chars.length);
     password += chars.substring(randomNumber, randomNumber + 1);
   }
-  
-
-  // Other functions
 
   // If the user selected Cancel on each option in the first go-round they will be prompted with the same questions,
   // and it updates the variables
-  function getCharacters() {
+  function selectCharacters() {
     special = confirm("Would you like to include special characters?");
-    numeric = confirm("What about numeric characters?");
+    numeric = confirm("What about numbers?");
     lowercase = confirm("Include lowercase letters?");
     uppercase = confirm("Press OK to include uppercase letters");
 
